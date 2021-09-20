@@ -4,7 +4,7 @@ var quizContainer1 = document.getElementById('quiz1');
 var quizContainer2 = document.getElementById('quiz2');
 var quizContainer3 = document.getElementById('quiz3');
 var quizContainer4 = document.getElementById('quiz4');
-var result = document.getElementById('result')
+var correctStatus = document.getElementById('result')
 var resultsPage = document.getElementById('results-page')
 var timer = 0;
 var timerCount;
@@ -20,8 +20,8 @@ var c03 = document.getElementById('choice-03');
 var c04 = document.getElementById('choice-04');
 
 
-var c11 = document.getElementById('choice-11')
-var c12 = document.getElementById('choice-12')
+var c11 = document.getElementById('choice-11');
+var c12 = document.getElementById('choice-12');
 var c13 = document.getElementById('choice-13');
 var c14 = document.getElementById('choice-14');
 
@@ -48,6 +48,7 @@ function startGame() {
     // Prevents start button from being clicked when round is in progress
     startButton.disabled = true;
     startTimer()
+    quizContainer1.setAttribute("style", "visibility: visible;")
 }
 function startTimer() {
     // Sets timer
