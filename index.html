@@ -16,16 +16,13 @@
     </button>
 
     <div class="timer">
-        <div class="timer-text">
+        <div id="timer-text">
 
-            <div id="timer-count">20</div>
-            <h3>seconds remaining</h3>
+            <span id="timer-count">20</span> <span>seconds remaining</span>
+
         </div>
         </header>
-        <div>
-            <p class="wins">Wins</p>
-            <p class="losses">Losses</p>
-        </div>
+
         <div>
 
 
@@ -103,13 +100,14 @@
                     </button>
                 </ol>
             </div>
-            <button id="submit">Submit Quiz</button>
-            <div id="results-page">
+            <div id="final-page">
                 <div id="result"></div>
+                <p class="high-score">High Score: </p>
+                <button class="reset-button">
+                    Clear high scores!
+                </button>
             </div>
-            <!--Use for the clear scores--><button class="reset-button">
-                Clear high scores!
-            </button>
+            <!--Use for the clear scores-->
             <script src="assets/js/script.js"></script>
 </body>
 

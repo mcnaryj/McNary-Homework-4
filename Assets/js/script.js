@@ -1,11 +1,12 @@
 var startButton = document.getElementById("start-button");
 var timerElement = document.getElementById("timer-count");
+var timerText = document.getElementById("timer-text");
 var quizContainer1 = document.getElementById('quiz1');
 var quizContainer2 = document.getElementById('quiz2');
 var quizContainer3 = document.getElementById('quiz3');
 var quizContainer4 = document.getElementById('quiz4');
 var correctStatus = document.getElementById('result')
-var resultsPage = document.getElementById('results-page')
+var finalPage = document.getElementById('final-page')
 var timer = 0;
 var timerCount;
 
@@ -36,6 +37,7 @@ var c33 = document.getElementById('choice-33');
 var c34 = document.getElementById('choice-34');
 
 
+var count = 20;
 // created a function to start the game
 
 startButton.addEventListener('click', startGame);
@@ -48,7 +50,10 @@ function startGame() {
     // Prevents start button from being clicked when round is in progress
     startButton.disabled = true;
     startTimer()
-    quizContainer1.setAttribute("style", "visibility: visible;")
+    quizContainer1.setAttribute("style", "visibility: visible;");
+    console.log("What's goin on here?")
+    startButton.setAttribute("style", "display: none;")
+
 }
 function startTimer() {
     // Sets timer
@@ -60,13 +65,20 @@ function startTimer() {
             if (isWin && timerCount > 0) {
                 // Clears interval and stops timer
                 clearInterval(timer);
-                winGame();
             }
         }
         // Tests if time has run out
         if (timerCount === 0) {
+
             // Clears interval
             clearInterval(timer);
+            quizContainer1.setAttribute("style", "display: none;");
+            quizContainer2.setAttribute("style", "display: none;");
+            quizContainer3.setAttribute("style", "display: none;");
+            quizContainer4.setAttribute("style", "display: none;");
+
+            finalPage.setAttribute("style", "visibility:visible;");
+            timerText.setAttribute("style", "display: none;");
         }
     }, 1000);
 }
@@ -74,6 +86,7 @@ function startTimer() {
 // For the first question
 var choice01 = function () {
     if (c01.dataset.answer === "true") {
+        console.log("Did we did it?")
         correctStatus.innerText = "Nice!";
         quizContainer2.setAttribute("style", "visibility: visible;");
         quizContainer1.setAttribute("style", "display: none;");
@@ -94,7 +107,7 @@ var choice02 = function () {
         correctStatus.innerText = "Wrong!!";
         quizContainer2.setAttribute("style", "visibility: visible;");
         quizContainer1.setAttribute("style", "display: none;");
-        count = count - 10;
+        count = timerCount - 10;
     }
 };
 var choice03 = function () {
@@ -133,7 +146,7 @@ var choice11 = function () {
         correctStatus.innerText = "Wrong!!";
         quizContainer3.setAttribute("style", "visibility: visible;");
         quizContainer2.setAttribute("style", "display: none;");
-        timerCount = timerCount - 10;
+        count = timerCount - 10;
     }
 };
 var choice12 = function () {
@@ -145,7 +158,7 @@ var choice12 = function () {
         correctStatus.innerText = "Wrong!!";
         quizContainer3.setAttribute("style", "visibility: visible;");
         quizContainer2.setAttribute("style", "display: none;");
-        timerCount = timerCount - 10;
+        count = timerCount - 10;
     }
 };
 var choice13 = function () {
@@ -157,7 +170,7 @@ var choice13 = function () {
         correctStatus.innerText = "Wrong!!";
         quizContainer3.setAttribute("style", "visibility: visible;");
         quizContainer2.setAttribute("style", "display: none;");
-        timerCount = timerCount - 10;
+        count = timerCount - 10;
     }
 };
 var choice14 = function () {
@@ -169,7 +182,7 @@ var choice14 = function () {
         correctStatus.innerText = "Wrong!!";
         quizContainer3.setAttribute("style", "visibility: visible;");
         quizContainer2.setAttribute("style", "display: none;");
-        timerCount = timerCount - 10;
+        count = timerCount - 10;
     }
 };
 
@@ -183,7 +196,7 @@ var choice21 = function () {
         correctStatus.innerText = "Wrong!!";
         quizContainer4.setAttribute("style", "visibility: visible;");
         quizContainer3.setAttribute("style", "display: none;");
-        timerCount = timerCount - 10;
+        count = timerCount - 10;
     }
 };
 var choice22 = function () {
@@ -195,7 +208,7 @@ var choice22 = function () {
         correctStatus.innerText = "Wrong!!";
         quizContainer4.setAttribute("style", "visibility: visible;");
         quizContainer3.setAttribute("style", "display: none;");
-        timerCount = timerCount - 10;
+        count = timerCount - 10;
     }
 };
 var choice23 = function () {
@@ -207,7 +220,7 @@ var choice23 = function () {
         correctStatus.innerText = "Wrong!!";
         quizContainer4.setAttribute("style", "visibility: visible;");
         quizContainer3.setAttribute("style", "display: none;");
-        timerCount = timerCount - 10;
+        count = timerCount - 10;
     }
 };
 var choice24 = function () {
@@ -219,7 +232,7 @@ var choice24 = function () {
         correctStatus.innerText = "Wrong!!";
         quizContainer4.setAttribute("style", "visibility: visible;");
         quizContainer3.setAttribute("style", "display: none;");
-        timerCount = timerCount - 10;
+        count = timerCount - 10;
     }
 };
 
@@ -233,7 +246,7 @@ var choice31 = function () {
         correctStatus.innerText = "Wrong!!";
         finalPage.setAttribute("style", "visibility: visible;");
         quizContainer4.setAttribute("style", "display: none;");
-        timerCount = timerCount - 10;
+        count = timerCount - 10;
     }
 };
 var choice32 = function () {
@@ -245,7 +258,7 @@ var choice32 = function () {
         correctStatus.innerText = "Wrong!!";
         finalPage.setAttribute("style", "visibility: visible;");
         quizContainer4.setAttribute("style", "display: none;");
-        timerCount = timerCount - 10;
+        count = timerCount - 10;
     }
 };
 
@@ -258,37 +271,41 @@ var choice33 = function () {
         correctStatus.innerText = "Wrong!!";
         finalPage.setAttribute("style", "visibility: visible;");
         quizContainer4.setAttribute("style", "display: none;");
-        timerCount = timerCount - 10;
+        count = timerCount - 10;
     }
 }; var choice34 = function () {
     if (c34.dataset.answer === "true") {
         correctStatus.innerText = "Nice!";
+        console.log("whas goin on?");
         finalPage.setAttribute("style", "visibility: visible;");
         quizContainer4.setAttribute("style", "display: none;");
     } else {
         correctStatus.innerText = "Wrong!!";
         finalPage.setAttribute("style", "visibility: visible;");
         quizContainer4.setAttribute("style", "display: none;");
-        timerCount = timerCount - 10;
+        count = timerCount - 10;
     }
 };
 
-
-/* quizContainer1.setAttribute("style", "display: none;");
+// sets these containers to not display by default
+quizContainer1.setAttribute("style", "display: none;");
 quizContainer2.setAttribute("style", "display: none;");
 quizContainer3.setAttribute("style", "display: none;");
-quizContainer4.setAttribute("style", "display: none;"); */
+quizContainer4.setAttribute("style", "display: none;");
 
+finalPage.setAttribute("style", "display: none;");
 
+// function to handle deducting points from the score
 function incorrectAnswer() {
-    timerCount = timerCount - 10;
-    if (timerCount <= 0) {
+    count = count - 10;
+    if (count <= 0) {
         count = 0;
-        timerElement.textContent = "Time remaining: " + timerCount;
+        timerElement.textContent = "Time remaining: " + count;
     };
 
 }
 
+// created event listeners for all 16 choices. In retrospect, I could have used different naming conventions but these are clear enough to me.
 c01.addEventListener('click', choice01);
 c02.addEventListener('click', choice02);
 c03.addEventListener('click', choice03);
