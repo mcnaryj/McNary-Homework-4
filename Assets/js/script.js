@@ -5,10 +5,13 @@ var quizContainer1 = document.getElementById('quiz1');
 var quizContainer2 = document.getElementById('quiz2');
 var quizContainer3 = document.getElementById('quiz3');
 var quizContainer4 = document.getElementById('quiz4');
-var correctStatus = document.getElementById('result')
-var finalPage = document.getElementById('final-page')
+var correctStatus = document.getElementById('result');
+var submitPage = document.getElementById('final-page');
+var addScoreBtn = document.getElementById('add-score');
+var highScore = document.getElementById("high-score");
+
 var timer = 0;
-var timerCount;
+var timerCount = document.getElementById('score');
 
 
 // const highScoreContainer = document.getElementById('high-score');
@@ -37,7 +40,6 @@ var c33 = document.getElementById('choice-33');
 var c34 = document.getElementById('choice-34');
 
 
-var count = 20;
 // created a function to start the game
 
 startButton.addEventListener('click', startGame);
@@ -53,6 +55,7 @@ function startGame() {
     quizContainer1.setAttribute("style", "visibility: visible;");
     console.log("What's goin on here?")
     startButton.setAttribute("style", "display: none;")
+    timerText.setAttribute("style", "visibility;");
 
 }
 function startTimer() {
@@ -68,7 +71,7 @@ function startTimer() {
             }
         }
         // Tests if time has run out
-        if (timerCount === 0) {
+        if (timerCount <= 0) {
 
             // Clears interval
             clearInterval(timer);
@@ -77,7 +80,7 @@ function startTimer() {
             quizContainer3.setAttribute("style", "display: none;");
             quizContainer4.setAttribute("style", "display: none;");
 
-            finalPage.setAttribute("style", "visibility:visible;");
+            submitPage.setAttribute("style", "visibility:visible;");
             timerText.setAttribute("style", "display: none;");
         }
     }, 1000);
@@ -85,53 +88,46 @@ function startTimer() {
 
 // For the first question
 var choice01 = function () {
-    if (c01.dataset.answer === "true") {
+    if (c01.dataset.answer === "True") {
         console.log("Did we did it?")
-        correctStatus.innerText = "Nice!";
         quizContainer2.setAttribute("style", "visibility: visible;");
         quizContainer1.setAttribute("style", "display: none;");
     } else {
-        correctStatus.innerText = "Wrong!!";
+        console.log("is it running?");
         quizContainer2.setAttribute("style", "visibility: visible;");
         quizContainer1.setAttribute("style", "display: none;");
-        count = timerCount - 10;
+        timerCount = timerCount - 5;
     }
 };
 
 var choice02 = function () {
-    if (c02.dataset.answer === "true") {
-        correctStatus.innerText = "Nice!";
+    if (c02.dataset.answer === "True") {
         quizContainer2.setAttribute("style", "visibility: visible;");
         quizContainer1.setAttribute("style", "display: none;");
     } else {
-        correctStatus.innerText = "Wrong!!";
         quizContainer2.setAttribute("style", "visibility: visible;");
         quizContainer1.setAttribute("style", "display: none;");
-        count = timerCount - 10;
+        timerCount = timerCount - 5;
     }
 };
 var choice03 = function () {
-    if (c03.dataset.answer === "true") {
-        correctStatus.innerText = "Nice!";
+    if (c03.dataset.answer === "True") {
         quizContainer2.setAttribute("style", "visibility: visible;");
         quizContainer1.setAttribute("style", "display: none;");
     } else {
-        correctStatus.innerText = "Wrong!!";
         quizContainer2.setAttribute("style", "visibility: visible;");
         quizContainer1.setAttribute("style", "display: none;");
-        count = timerCount - 10;
+        timerCount = timerCount - 5;
     }
 };
 var choice04 = function () {
-    if (c04.dataset.answer === "true") {
-        correctStatus.innerText = "Nice!";
+    if (c04.dataset.answer === "True") {
         quizContainer2.setAttribute("style", "visibility: visible;");
         quizContainer1.setAttribute("style", "display: none;");
     } else {
-        correctStatus.innerText = "Wrong!!";
         quizContainer2.setAttribute("style", "visibility: visible;");
         quizContainer1.setAttribute("style", "display: none;");
-        count = timerCount - 10;
+        timerCount = timerCount - 5;
     }
 };
 
@@ -139,152 +135,130 @@ var choice04 = function () {
 // for the second question
 var choice11 = function () {
     if (c11.dataset.answer === "true") {
-        correctStatus.innerText = "Nice!";
         quizContainer3.setAttribute("style", "visibility: visible;");
         quizContainer2.setAttribute("style", "display: none;");
     } else {
-        correctStatus.innerText = "Wrong!!";
         quizContainer3.setAttribute("style", "visibility: visible;");
         quizContainer2.setAttribute("style", "display: none;");
-        count = timerCount - 10;
+        timerCount = timerCount - 5;
     }
 };
 var choice12 = function () {
-    if (c12.dataset.answer === "true") {
-        correctStatus.innerText = "Nice!";
+    if (c12.dataset.answer === "True") {
         quizContainer3.setAttribute("style", "visibility: visible;");
         quizContainer2.setAttribute("style", "display: none;");
     } else {
-        correctStatus.innerText = "Wrong!!";
         quizContainer3.setAttribute("style", "visibility: visible;");
         quizContainer2.setAttribute("style", "display: none;");
-        count = timerCount - 10;
+        timerCount = timerCount - 5;
     }
 };
 var choice13 = function () {
-    if (c13.dataset.answer === "true") {
-        correctStatus.innerText = "Nice!";
+    if (c13.dataset.answer === "True") {
         quizContainer3.setAttribute("style", "visibility: visible;");
         quizContainer2.setAttribute("style", "display: none;");
     } else {
-        correctStatus.innerText = "Wrong!!";
         quizContainer3.setAttribute("style", "visibility: visible;");
         quizContainer2.setAttribute("style", "display: none;");
-        count = timerCount - 10;
+        timerCount = timerCount - 5;
     }
 };
 var choice14 = function () {
-    if (c14.dataset.answer === "true") {
-        correctStatus.innerText = "Nice!";
+    if (c14.dataset.answer === "True") {
         quizContainer3.setAttribute("style", "visibility: visible;");
         quizContainer2.setAttribute("style", "display: none;");
     } else {
-        correctStatus.innerText = "Wrong!!";
         quizContainer3.setAttribute("style", "visibility: visible;");
         quizContainer2.setAttribute("style", "display: none;");
-        count = timerCount - 10;
+        timerCount = timerCount - 5;
     }
 };
 
 // Third Question
 var choice21 = function () {
-    if (c21.dataset.answer === "true") {
-        correctStatus.innerText = "Nice!";
+    if (c21.dataset.answer === "True") {
         quizContainer4.setAttribute("style", "visibility: visible;");
         quizContainer3.setAttribute("style", "display: none;");
     } else {
-        correctStatus.innerText = "Wrong!!";
         quizContainer4.setAttribute("style", "visibility: visible;");
         quizContainer3.setAttribute("style", "display: none;");
-        count = timerCount - 10;
+        timerCount = timerCount - 5;
     }
 };
 var choice22 = function () {
-    if (c22.dataset.answer === "true") {
-        correctStatus.innerText = "Nice!";
+    if (c22.dataset.answer === "True") {
         quizContainer4.setAttribute("style", "visibility: visible;");
         quizContainer3.setAttribute("style", "display: none;");
     } else {
-        correctStatus.innerText = "Wrong!!";
         quizContainer4.setAttribute("style", "visibility: visible;");
         quizContainer3.setAttribute("style", "display: none;");
-        count = timerCount - 10;
+        timerCount = timerCount - 5;
     }
 };
 var choice23 = function () {
-    if (c23.dataset.answer === "true") {
-        correctStatus.innerText = "Nice!";
+    if (c23.dataset.answer === "True") {
         quizContainer4.setAttribute("style", "visibility: visible;");
         quizContainer3.setAttribute("style", "display: none;");
     } else {
-        correctStatus.innerText = "Wrong!!";
         quizContainer4.setAttribute("style", "visibility: visible;");
         quizContainer3.setAttribute("style", "display: none;");
-        count = timerCount - 10;
+        timerCount = timerCount - 5;
     }
 };
 var choice24 = function () {
-    if (c24.dataset.answer === "true") {
-        correctStatus.innerText = "Nice!";
+    if (c24.dataset.answer === "True") {
         quizContainer4.setAttribute("style", "visibility: visible;");
         quizContainer3.setAttribute("style", "display: none;");
     } else {
-        correctStatus.innerText = "Wrong!!";
         quizContainer4.setAttribute("style", "visibility: visible;");
         quizContainer3.setAttribute("style", "display: none;");
-        count = timerCount - 10;
+        timerCount = timerCount - 5;
     }
 };
 
 // Fourth Question
 var choice31 = function () {
-    if (c31.dataset.answer === "true") {
-        correctStatus.innerText = "Nice!";
-        finalPage.setAttribute("style", "visibility: visible;");
+    if (c31.dataset.answer === "True") {
+        submitPage.setAttribute("style", "visibility: visible;");
         quizContainer4.setAttribute("style", "display: none;");
     } else {
-        correctStatus.innerText = "Wrong!!";
-        finalPage.setAttribute("style", "visibility: visible;");
+        submitPage.setAttribute("style", "visibility: visible;");
         quizContainer4.setAttribute("style", "display: none;");
-        count = timerCount - 10;
+        timerCount = timerCount - 5;
     }
 };
 var choice32 = function () {
-    if (c32.dataset.answer === "true") {
-        correctStatus.innerText = "Nice!";
-        finalPage.setAttribute("style", "visibility: visible;");
+    if (c32.dataset.answer === "True") {
+        submitPage.setAttribute("style", "visibility: visible;");
         quizContainer4.setAttribute("style", "display: none;");
     } else {
-        correctStatus.innerText = "Wrong!!";
-        finalPage.setAttribute("style", "visibility: visible;");
+        submitPage.setAttribute("style", "visibility: visible;");
         quizContainer4.setAttribute("style", "display: none;");
-        count = timerCount - 10;
+        timerCount = timerCount - 5;
     }
 };
 
 var choice33 = function () {
-    if (c33.dataset.answer === "true") {
-        correctStatus.innerText = "Nice!";
-        finalPage.setAttribute("style", "visibility: visible;");
+    if (c33.dataset.answer === "True") {
+        submitPage.setAttribute("style", "visibility: visible;");
         quizContainer4.setAttribute("style", "display: none;");
     } else {
-        correctStatus.innerText = "Wrong!!";
-        finalPage.setAttribute("style", "visibility: visible;");
+        submitPage.setAttribute("style", "visibility: visible;");
         quizContainer4.setAttribute("style", "display: none;");
-        count = timerCount - 10;
+        timerCount = timerCount - 5;
     }
 }; var choice34 = function () {
-    if (c34.dataset.answer === "true") {
-        correctStatus.innerText = "Nice!";
+    if (c34.dataset.answer === "True") {
         console.log("whas goin on?");
-        finalPage.setAttribute("style", "visibility: visible;");
+        submitPage.setAttribute("style", "visibility: visible;");
         quizContainer4.setAttribute("style", "display: none;");
     } else {
-        correctStatus.innerText = "Wrong!!";
-        finalPage.setAttribute("style", "visibility: visible;");
+        console.log("is it working?");
+        submitPage.setAttribute("style", "visibility: visible;");
         quizContainer4.setAttribute("style", "display: none;");
-        count = timerCount - 10;
+        timerCount = timerCount - 5;
     }
+
 };
 
 // sets these containers to not display by default
@@ -292,21 +266,50 @@ quizContainer1.setAttribute("style", "display: none;");
 quizContainer2.setAttribute("style", "display: none;");
 quizContainer3.setAttribute("style", "display: none;");
 quizContainer4.setAttribute("style", "display: none;");
+timerText.setAttribute("style", "display: none;");
+submitPage.setAttribute("style", "display: none;");
 
-finalPage.setAttribute("style", "display: none;");
+var addScore = function () {
+    submitPage.setAttribute("style", "visiblity: visible;");
+    userScore = timerCount.textContent;
+    contactInfo = document.getElementById("user-input").value;
 
-// function to handle deducting points from the score
-function incorrectAnswer() {
-    count = count - 10;
-    if (count <= 0) {
-        count = 0;
-        timerElement.textContent = "Time remaining: " + count;
-    };
 
+    const localStorageContent = localStorage.getItem('User Initials');
+
+
+    let userScore;
+
+    if (localStorageContent === null) {
+        userScore = [];
+    }
+    else {
+        userScore = JSON.parse(localStorageContent);
+        highScore.textContent = userScore
+    }
+    userScore.push(contactInfo, userScore)
+    localStorage.setItem("Player Details", JSON.stringify(userScore));
 }
 
 // created event listeners for all 16 choices. In retrospect, I could have used different naming conventions but these are clear enough to me.
 c01.addEventListener('click', choice01);
+/*
+document.getElementById('choice-01').addEventListener('click', function (event) {
+
+    var data = event.target.getAttribute('data-answer')
+    if (event.target.dataset.answer === "True") {
+        console.log("Did we did it?")
+        correctStatus.innerText = "Nice!";
+        quizContainer2.setAttribute("style", "visibility: visible;");
+        quizContainer1.setAttribute("style", "display: none;");
+    } else {
+        correctStatus.innerText = "Wrong!!";
+        console.log("is it running?");
+        quizContainer2.setAttribute("style", "visibility: visible;");
+        quizContainer1.setAttribute("style", "display: none;");
+        timerCount = timerCount - 5;
+    }
+})*/
 c02.addEventListener('click', choice02);
 c03.addEventListener('click', choice03);
 c04.addEventListener('click', choice04);
@@ -323,3 +326,4 @@ c32.addEventListener('click', choice32);
 c33.addEventListener('click', choice33);
 c34.addEventListener('click', choice34);
 
+addScoreBtn.addEventListener("click", addScore);

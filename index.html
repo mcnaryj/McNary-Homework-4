@@ -31,16 +31,16 @@
                 <h1 id="question1" class="questions">Who was the MVP of Super Bowl 32?</h1>
                 <ol>
                     <button id="choice-01" data-answer="True">
-                        <li id="choice-01">Terrell Davis</li>
+                        <li>Terrell Davis</li>
                     </button>
                     <button id="choice-02" data-answer="False">
-                        <li id="choice-02">Steve Atwater</li>
+                        <li>Steve Atwater</li>
                     </button>
                     <button id="choice-03" data-answer="False">
-                        <li id="choice-03">John Elway</li>
+                        <li>John Elway</li>
                     </button>
                     <button id="choice-04" data-answer="False">
-                        <li id="choice-04">Brett Favre</li>
+                        <li>Brett Favre</li>
                     </button>
                 </ol>
             </div>
@@ -49,16 +49,16 @@
                     <h1 id="question2" class="questions">Which city does not have all 4 major sports franchises (NFL,
                         NBA, NHL, MLB)?</h1>
                     <button id="choice-11" data-answer="False">
-                        <li id="choice-11">Seattle</li>
+                        <li>Seattle</li>
                     </button>
                     <button id="choice-12" data-answer="False">
-                        <li id="choice-12">Denver</li>
+                        <li">Denver</li>
                     </button>
                     <button id="choice-13" data-answer="True">
-                        <li id="choice-13">Houston</li>
+                        <li>Houston</li>
                     </button>
                     <button id="choice-14" data-answer="False">
-                        <li id="choice-14">Philadelphia</li>
+                        <li>Philadelphia</li>
                     </button>
                 </ol>
             </div>
@@ -68,16 +68,17 @@
                         Cups, to
                         the disbelief of many (this quiz creator included). What is the proposed change?</h1>
                     <button id="choice-21" data-answer="True">
-                        <li id="choice-21">From every 4 years to every 2 years</li>
+                        <li>From every 4 years to every 2 years</li>
                     </button>
+                    <!-- can only grab an id once-->
                     <button id="choice-22" data-answer="False">
-                        <li id="choice-22">From every 5 years to every 3 years</li>
+                        <li>From every 5 years to every 3 years</li>
                     </button>
-                    <button id="choice-23" data-answer="True">
-                        <li id="choice-23">No changes have been brought up</li>
+                    <button id="choice-23" data-answer="False">
+                        <li>No changes have been brought up</li>
                     </button>
                     <button id="choice-24" data-answer="False">
-                        <li id="choice-24">They're doing what now?</li>
+                        <li>They're doing what now?</li>
                     </button>
                 </ol>
             </div>
@@ -87,25 +88,30 @@
                         the
                         quaffle?</h1>
                     <button id="choice-31" data-answer="False">
-                        <li id="choice-31">Mr. Quaffle's waffle sports</li>
+                        <li>Mr. Quaffle's waffle sports</li>
                     </button>
                     <button id="choice-32" data-answer="False">
-                        <li id="choice-32">Who even knows at this point?</li>
+                        <li>Who even knows at this point?</li>
                     </button>
                     <button id="choice-33" data-answer="True">
-                        <li id="choice-33">Quidditch</li>
+                        <li>Quidditch</li>
                     </button>
                     <button id="choice-34" data-answer="False">
-                        <li id="choice-34">Australian Rules Football</li>
+                        <li>Australian Rules Football</li>
                     </button>
                 </ol>
             </div>
             <div id="final-page">
                 <div id="result"></div>
-                <p class="high-score">High Score: </p>
-                <button class="reset-button">
-                    Clear high scores!
-                </button>
+                <p>Score: <span id="score"></span></p>
+                <p>Submit your initials to record your score!</p>
+
+                <form id="myForm">
+                    <input type="text" id="user-input" required maxlength="2" minlength="1"
+                        placeholder="User Initials"></input>
+                </form> <button id="add-score">Add Score</button>
+
+
             </div>
             <!--Use for the clear scores-->
             <script src="assets/js/script.js"></script>
