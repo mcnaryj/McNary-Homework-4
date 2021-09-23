@@ -8,10 +8,11 @@ var quizContainer4 = document.getElementById('quiz4');
 var correctStatus = document.getElementById('result');
 var submitPage = document.getElementById('final-page');
 var addScoreBtn = document.getElementById('add-score');
-var highScore = document.getElementById("high-score");
+var userScore = document.getElementById('score');
+var userInitials = document.getElementById('submit');
 
 var timer = 0;
-var timerCount = document.getElementById('score');
+var timerCount;
 
 
 // const highScoreContainer = document.getElementById('high-score');
@@ -52,8 +53,8 @@ function startGame() {
     // Prevents start button from being clicked when round is in progress
     startButton.disabled = true;
     startTimer()
+    console.log("Starting Quiz")
     quizContainer1.setAttribute("style", "visibility: visible;");
-    console.log("What's goin on here?")
     startButton.setAttribute("style", "display: none;")
     timerText.setAttribute("style", "visibility;");
 
@@ -64,7 +65,6 @@ function startTimer() {
         timerCount--;
         timerElement.textContent = timerCount;
         if (timerCount >= 0) {
-            // Tests if win condition is met
             if (isWin && timerCount > 0) {
                 // Clears interval and stops timer
                 clearInterval(timer);
@@ -72,7 +72,6 @@ function startTimer() {
         }
         // Tests if time has run out
         if (timerCount <= 0) {
-
             // Clears interval
             clearInterval(timer);
             quizContainer1.setAttribute("style", "display: none;");
@@ -83,13 +82,14 @@ function startTimer() {
             submitPage.setAttribute("style", "visibility:visible;");
             timerText.setAttribute("style", "display: none;");
         }
+
     }, 1000);
 }
 
 // For the first question
 var choice01 = function () {
     if (c01.dataset.answer === "True") {
-        console.log("Did we did it?")
+        console.log("Has the needful been done?")
         quizContainer2.setAttribute("style", "visibility: visible;");
         quizContainer1.setAttribute("style", "display: none;");
     } else {
@@ -125,6 +125,7 @@ var choice04 = function () {
         quizContainer2.setAttribute("style", "visibility: visible;");
         quizContainer1.setAttribute("style", "display: none;");
     } else {
+        console.log("Has the needful been done?")
         quizContainer2.setAttribute("style", "visibility: visible;");
         quizContainer1.setAttribute("style", "display: none;");
         timerCount = timerCount - 5;
@@ -221,6 +222,8 @@ var choice31 = function () {
     if (c31.dataset.answer === "True") {
         submitPage.setAttribute("style", "visibility: visible;");
         quizContainer4.setAttribute("style", "display: none;");
+        window.setTimeout(closeResult, 2000);
+
     } else {
         submitPage.setAttribute("style", "visibility: visible;");
         quizContainer4.setAttribute("style", "display: none;");
@@ -231,6 +234,7 @@ var choice32 = function () {
     if (c32.dataset.answer === "True") {
         submitPage.setAttribute("style", "visibility: visible;");
         quizContainer4.setAttribute("style", "display: none;");
+        window.setTimeout(closeResult, 2000);
     } else {
         submitPage.setAttribute("style", "visibility: visible;");
         quizContainer4.setAttribute("style", "display: none;");
@@ -242,6 +246,7 @@ var choice33 = function () {
     if (c33.dataset.answer === "True") {
         submitPage.setAttribute("style", "visibility: visible;");
         quizContainer4.setAttribute("style", "display: none;");
+        window.setTimeout(closeResult, 2000);
     } else {
         submitPage.setAttribute("style", "visibility: visible;");
         quizContainer4.setAttribute("style", "display: none;");
@@ -252,6 +257,7 @@ var choice33 = function () {
         console.log("whas goin on?");
         submitPage.setAttribute("style", "visibility: visible;");
         quizContainer4.setAttribute("style", "display: none;");
+        window.setTimeout(closeResult, 2000);
     } else {
         console.log("is it working?");
         submitPage.setAttribute("style", "visibility: visible;");
@@ -268,29 +274,39 @@ quizContainer3.setAttribute("style", "display: none;");
 quizContainer4.setAttribute("style", "display: none;");
 timerText.setAttribute("style", "display: none;");
 submitPage.setAttribute("style", "display: none;");
+function closeResult() {
+    correctStatus.style.display = " none";
+};
+closeResult();
+
+
 
 var addScore = function () {
     submitPage.setAttribute("style", "visiblity: visible;");
-    userScore = timerCount.textContent;
-    contactInfo = document.getElementById("user-input").value;
+    userScore = timerCount;
 
 
-    const localStorageContent = localStorage.getItem('User Initials');
+    var localStorageContent = localStorage.setItem("High Score", userScore);
 
-
-    let userScore;
 
     if (localStorageContent === null) {
         userScore = [];
     }
     else {
-        userScore = JSON.parse(localStorageContent);
-        highScore.textContent = userScore
+        score.textContent = userScore
     }
-    userScore.push(contactInfo, userScore)
-    localStorage.setItem("Player Details", JSON.stringify(userScore));
+
 }
 
+var addInitials = function () {
+    userInitials = userInitials.getElementById("submit");
+
+    JSON.stringify(userInitials.value);
+    var localStorageContent = localStorage.setItem("User Initials", userInitials);
+
+    addInitials();
+
+}
 // created event listeners for all 16 choices. In retrospect, I could have used different naming conventions but these are clear enough to me.
 c01.addEventListener('click', choice01);
 /*
@@ -327,3 +343,20 @@ c33.addEventListener('click', choice33);
 c34.addEventListener('click', choice34);
 
 addScoreBtn.addEventListener("click", addScore);
+
+// Get the value of the name field.
+/* userInitials = $(function () {
+    $("#add-score").click(function () {
+    var userInitials = $("#name").val();
+        localStorageContent.setItem("User Initials", userInitials);
+        console.log("did anything happen?");
+        if (localStorageContent === null) {
+            userInitials = [];
+        }
+        else {
+            userInitials.textContent = userInitials
+        }
+    })
+
+});
+*/
