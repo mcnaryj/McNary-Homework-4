@@ -9,8 +9,8 @@ var correctStatus = document.getElementById('result');
 var submitPage = document.getElementById('final-page');
 var addScoreBtn = document.getElementById('add-score');
 var userScore = document.getElementById('score');
-var userInitials = document.getElementById('submit');
-
+var userInitials = document.getElementById('user-init');
+var scorePage = document.getElementById('score-page');
 var timer = 0;
 var timerCount;
 
@@ -262,6 +262,7 @@ var choice33 = function () {
         console.log("is it working?");
         submitPage.setAttribute("style", "visibility: visible;");
         quizContainer4.setAttribute("style", "display: none;");
+        window.open()
         timerCount = timerCount - 5;
     }
 
@@ -274,6 +275,7 @@ quizContainer3.setAttribute("style", "display: none;");
 quizContainer4.setAttribute("style", "display: none;");
 timerText.setAttribute("style", "display: none;");
 submitPage.setAttribute("style", "display: none;");
+scorePage.setAttribute("style", "display: none;");
 function closeResult() {
     correctStatus.style.display = " none";
 };
@@ -281,37 +283,86 @@ closeResult();
 
 
 
+
 var addScore = function () {
     submitPage.setAttribute("style", "visiblity: visible;");
     userScore = timerCount;
+    userInitials = document.getElementById("submit").value;
+    localStorage.setItem("High Score", userScore);
 
 
-    var localStorageContent = localStorage.setItem("High Score", userScore);
-
-
+    const localStorageContent = localStorage.setItem('User Initials: ', userInitials);
     if (localStorageContent === null) {
         userScore = [];
     }
     else {
-        score.textContent = userScore
+        final_scores.score.textContent = userScore
+    }
+    console.log("Adding user initials and score to local storage and the html page");
+}
+
+var showScores = function () {
+    localStorage.JSON.parse(userScore);
+    localStorage.getItem("score", userScore);
+
+    for (var i = 0; i < userScore.length; i++) {
+        var listItem = document.createElement("li");
+        listItem.textContent = userScore[i].name + ": " + userScore[i].score;
+        highScores.appendChild(listItem);
+
+
     }
 
 }
 
+
+var newGame = function () {
+    location.reload();
+};
+
+var eraseScores = function () {
+    window.localStorage.clear();
+    eraseScores();
+
+};
+
+
+/* 
+ 
 var addInitials = function () {
-    userInitials = userInitials.getElementById("submit");
-
-    JSON.stringify(userInitials.value);
-    var localStorageContent = localStorage.setItem("User Initials", userInitials);
-
-    addInitials();
-
+ 
+    const localStorage = localStorage.getItem('User Initials: ')
+    localStorage.setItem("User Initials", JSON.stringify(arr));
+    console.log("please work");
+ 
 }
+/*    var userInitials = document.getElementById("submit");
+    localStorageContent.JSON.stringify(userInitials);
+    var localStorageContent = localStorageContent.setItem("User Initials", userInitials);
+    console.log("Checking") */
+
+
+/* myForm.addEventListener("submit", addU);
+ 
+const list = document.querySelector("#list-items");
+const listItems = document.getElementsByTagName('li');
+ 
+function addUserInitials() {
+    const userInitials = document.querySelector("add-score").value;
+    const userListItem = document.createElement("li");
+    userListItem.appendChild(document.createTextNode(userInitials));
+    list.appendChild(userListItem);
+    const myArray = map(listItems, getText);
+    localStorage.setItem('User Initials', JSON.stringify(myArray));
+    console.log("Is this doing anything");
+ 
+    addUserInitials();
+} */
+
 // created event listeners for all 16 choices. In retrospect, I could have used different naming conventions but these are clear enough to me.
-c01.addEventListener('click', choice01);
 /*
 document.getElementById('choice-01').addEventListener('click', function (event) {
-
+ 
     var data = event.target.getAttribute('data-answer')
     if (event.target.dataset.answer === "True") {
         console.log("Did we did it?")
@@ -326,6 +377,7 @@ document.getElementById('choice-01').addEventListener('click', function (event) 
         timerCount = timerCount - 5;
     }
 })*/
+c01.addEventListener('click', choice01);
 c02.addEventListener('click', choice02);
 c03.addEventListener('click', choice03);
 c04.addEventListener('click', choice04);
@@ -343,6 +395,7 @@ c33.addEventListener('click', choice33);
 c34.addEventListener('click', choice34);
 
 addScoreBtn.addEventListener("click", addScore);
+
 
 // Get the value of the name field.
 /* userInitials = $(function () {
