@@ -299,6 +299,7 @@ var addScore = function () {
         final_scores.score.textContent = userScore
     }
     console.log("Adding user initials and score to local storage and the html page");
+
 }
 
 var showScores = function () {
@@ -310,11 +311,10 @@ var showScores = function () {
         listItem.textContent = userScore[i].name + ": " + userScore[i].score;
         highScores.appendChild(listItem);
 
-
+        stopGame();
     }
 
 }
-
 
 var newGame = function () {
     location.reload();
